@@ -30,14 +30,14 @@ pedidos    1──N itens_pedido
 produtos   1──N itens_pedido
 ```
 
-## ▶️ Como executar
+##  Como executar
 
 1. Abra o **MySQL Workbench** (MySQL 8+).
 2. Execute o script de criação e carga do banco `loja_tech` (material da aula).
 3. Abra `atividade_loja_tech.sql` e execute por blocos (`Ctrl + Enter` na seleção).
 4. Cada procedure e view tem um comando de teste logo abaixo.
 
-## 🔎 Parte 1 — Consultas
+##  Parte 1 — Consultas
 
 | # | Objetivo | Técnica |
 |---|----------|---------|
@@ -71,7 +71,7 @@ CALL contar_produtos_categoria(3, @total);
 SELECT @total;
 ```
 
-## 👁️ Parte 3 — Views no lugar de Stored Procedures
+##  Parte 3 — Views no lugar de Stored Procedures
 
 | View | Situação | Por que View e não Procedure? |
 |------|----------|-------------------------------|
@@ -91,4 +91,4 @@ SELECT @total;
 
 ##  Autor
 
-**Seu Nome** — Disciplina de Banco de Dados
+**Nohana Assis ** — Disciplina de Banco de Dados
