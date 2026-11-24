@@ -1,4 +1,4 @@
-# 🛒 TechStore — Consultas SQL, Stored Procedures e Views
+#  TechStore — Consultas SQL, Stored Procedures e Views
 
 Atividade individual de Banco de Dados (MySQL) usando o banco relacional **`loja_tech`**, que simula o e-commerce de uma loja de tecnologia.
 
