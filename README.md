@@ -1,50 +1,94 @@
+# 🛒 TechStore — Consultas SQL, Stored Procedures e Views
 
-# TECHSTORE — BANCO DE DADOS RELACIONAL (`loja_tech`)
+Atividade individual de Banco de Dados (MySQL) usando o banco relacional **`loja_tech`**, que simula o e-commerce de uma loja de tecnologia.
 
-![MySQL](https://img.shields.io/badge/MySQL-8.0%2B-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Conclu%C3%ADdo-2EA44F?style=for-the-badge)
-![SENAI](https://img.shields.io/badge/SENAI-Su%C3%AD%C3%A7o--Brasileira-E30613?style=for-the-badge)
-![Padrão](https://img.shields.io/badge/Nomenclatura-snake__case-blueviolet?style=for-the-badge)
+##  Sobre o projeto
 
-**Sistema de Gestão Comercial, Catálogo de Produtos, Consultas Analíticas (DQL), Stored Procedures com Auditoria e Views**
+| Parte | Conteúdo |
+|-------|----------|
+| 1 | 10 consultas SQL (SELECT, WHERE, ORDER BY, LIKE, COUNT, SUM, INNER JOIN) |
+| 2 | 5 Stored Procedures (sem parâmetros, IN, IN/OUT, INSERT e UPDATE) |
+| 3 | 5 exemplos de situações em que **Views** são melhores que Stored Procedures |
 
-* **Instituição:** Escola SENAI Suíço-Brasileira
-* **Professor:** Átila
-* **Disciplina:** Banco de Dados
-* **Autora:** Nohana Assis
-* **Turma:** SEDUC 2
-* **Repositório:** [github.com/nohanaassis-ui/loja_tech_banco](https://github.com/nohanaassis-ui/loja_tech_banco)
-* **Ambiente:** MySQL Server 8.0+ / MySQL Workbench
-* **Data:** 24/11/2026
+##  Estrutura do repositório
 
----
+```
+.
+├── README.md
+├── atividade_loja_tech.sql      # consultas, procedures e views
+└── (opcional) script_loja_tech.sql  # criação do banco e carga inicial
+```
 
-## 1. Apresentação e Escopo do Projeto
+##  Modelo do banco
 
-Este projeto consiste na aplicação prática de modelagem relacional, consultas analíticas (DQL), rotinas armazenadas (Stored Procedures) e visões virtuais (Views) no Banco de Dados Relacional **`loja_tech`**, desenvolvido e validado no **MySQL Workbench**. A atividade tem como objetivo consolidar a leitura de esquema, a sintaxe fundamental de consulta e manipulação de dados, a auditoria transacional e a criação de Stored Procedures parametrizadas para o gerenciamento operacional da loja de tecnologia **TechStore**.
+Tabelas: `categorias`, `produtos`, `clientes`, `pedidos`, `itens_pedido` e `log_operacoes`.
 
-### Escopo Operacional
-* **Gestão de Clientes:** Cadastro centralizado de consumidores, controle de dados de contato (e-mail, CPF e telefone) e histórico de compras realizadas na plataforma.
-* **Catálogo de Produtos e Categorias:** Organização de itens tecnológicos por departamentos, precificação, busca textual e monitoramento de disponibilidade em estoque.
-* **Controle de Pedidos e Faturamento:** Acompanhamento do status das vendas (como pedidos pendentes de pagamento), associação entre cliente e pedido e apuração do faturamento bruto.
-* **Automação com Stored Procedures e Views:** Encapsulamento de regras de consulta, inserção, atualização, contagem de registros, logs de auditoria e abstração de dados no servidor MySQL utilizando boas práticas de programação.
+```
+categorias 1──N produtos
+clientes   1──N pedidos
+pedidos    1──N itens_pedido
+produtos   1──N itens_pedido
+```
 
----
+## ▶️ Como executar
 
-## 2. Estrutura do Repositório
+1. Abra o **MySQL Workbench** (MySQL 8+).
+2. Execute o script de criação e carga do banco `loja_tech` (material da aula).
+3. Abra `atividade_loja_tech.sql` e execute por blocos (`Ctrl + Enter` na seleção).
+4. Cada procedure e view tem um comando de teste logo abaixo.
 
-Todos os arquivos e diretórios seguem estritamente o padrão **`snake_case`** (letras minúsculas e underline `_`, sem hífens ou caracteres especiais), conforme boas práticas adotadas em sala de aula:
+## 🔎 Parte 1 — Consultas
 
-```text
-loja_tech_banco/
-├── prints/
-│   ├── schema_e_carga/          # Evidências da criação do banco, tabelas e INSERTs
-│   ├── consultas/               # Evidências dos 10 desafios de consultas SQL (DQL)
-│   ├── procedures/              # Evidências de execução das 7 Stored Procedures e logs
-│   └── views/                   # Evidências de criação e consulta das 5 Views
-├── loja_tech_schema.sql         # Criação do banco, 6 tabelas relacionais e carga inicial
-├── loja_tech_consultas.sql      # Resolução comentada dos 10 desafios de consultas DQL
-├── loja_tech_procedures.sql     # 5 Procedures da lista + 2 Procedures avançadas com auditoria
-├── loja_tech_views.sql          # 5 cenários práticos comparando Views e Stored Procedures
-├── loja_tech_dump.sql           # Backup completo (estrutura, dados, procedures e views)
-└── README.md                    # Documentação técnica completa do projeto
+| # | Objetivo | Técnica |
+|---|----------|---------|
+| 1 | Nome e e-mail dos clientes | `SELECT` |
+| 2 | Produtos abaixo de R$ 500 | `WHERE` |
+| 3 | Pedidos pendentes | `WHERE` com ENUM |
+| 4 | Produtos do mais caro ao mais barato | `ORDER BY DESC` |
+| 5 | Produtos "Monitor" | `LIKE '%Monitor%'` |
+| 6 | Periféricos com estoque > 40 | `AND` |
+| 7 | Total de clientes | `COUNT` + alias |
+| 8 | Faturamento bruto | `SUM` + alias |
+| 9 | Produto e categoria | `INNER JOIN` |
+| 10 | Pedidos da Ana Silva | `INNER JOIN` + filtro |
+
+## ⚙️ Parte 2 — Stored Procedures
+
+Boas práticas aplicadas: `DROP PROCEDURE IF EXISTS`, `DELIMITER //` e prefixo `p_` nos parâmetros.
+
+| Procedure | Parâmetros | Função |
+|-----------|-----------|--------|
+| `listar_categorias_ativas` | — | Lista categorias ativas em ordem alfabética |
+| `buscar_pedidos_por_status` | `IN p_status` | Filtra pedidos por status |
+| `inserir_categoria` | `IN p_nome, p_descricao` | Insere nova categoria |
+| `atualizar_telefone_cliente` | `IN p_id_cliente, p_telefone` | Atualiza o telefone |
+| `contar_produtos_categoria` | `IN p_id_categoria, OUT p_total` | Conta produtos da categoria |
+
+Exemplo de uso com `OUT`:
+
+```sql
+CALL contar_produtos_categoria(3, @total);
+SELECT @total;
+```
+
+## 👁️ Parte 3 — Views no lugar de Stored Procedures
+
+| View | Situação | Por que View e não Procedure? |
+|------|----------|-------------------------------|
+| `vw_catalogo_produtos` | Catálogo com categoria | Consulta fixa, reutilizável, filtrável com `WHERE` |
+| `vw_pedidos_clientes` | Painel do atendimento | Só leitura; esconde o JOIN |
+| `vw_estoque_baixo` | Alerta de reposição | "Tabela virtual" sempre atualizada |
+| `vw_resumo_cliente` | Dashboards de BI | Ferramentas de BI leem views em `FROM`/`JOIN`; `CALL` não |
+| `vw_clientes_publico` | Segurança / LGPD | Expõe só colunas não sensíveis |
+
+**Regra prática:** use **View** quando a necessidade é *ler* dados de forma fixa e reutilizável (e compor com outras queries). Use **Stored Procedure** quando há parâmetros, lógica condicional, transações ou escrita (INSERT/UPDATE/DELETE).
+
+##  Referências
+
+- Material de aula: *Stored Procedures no MySQL* (aula-stored-procedures.pdf)
+- MySQL Reference Manual — Stored Routines: https://dev.mysql.com/doc/refman/8.0/en/stored-routines.html
+- MySQL Reference Manual — CREATE VIEW: https://dev.mysql.com/doc/refman/8.0/en/create-view.html
+
+##  Autor
+
+**Seu Nome** — Disciplina de Banco de Dados
