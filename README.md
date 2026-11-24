@@ -1,3 +1,4 @@
+
 # TECHSTORE — BANCO DE DADOS RELACIONAL (`loja_tech`)
 
 ![MySQL](https://img.shields.io/badge/MySQL-8.0%2B-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
@@ -8,25 +9,25 @@
 **Sistema de Gestão Comercial, Catálogo de Produtos, Consultas Analíticas (DQL), Stored Procedures com Auditoria e Views**
 
 * **Instituição:** Escola SENAI Suíço-Brasileira
-* **Disciplina:** Banco de Dados
 * **Professor:** Átila
-* **Aluna:** Nohana Assis
+* **Disciplina:** Banco de Dados
+* **Autora:** Nohana Assis
+* **Turma:** SEDUC 2
 * **Repositório:** [github.com/nohanaassis-ui/loja_tech_banco](https://github.com/nohanaassis-ui/loja_tech_banco)
 * **Ambiente:** MySQL Server 8.0+ / MySQL Workbench
-* **Data de Entrega:** Novembro de 2026
+* **Data:** 24/11/2026
 
 ---
 
 ## 1. Apresentação e Escopo do Projeto
 
-Este repositório apresenta a resolução completa das atividades práticas da disciplina de **Banco de Dados**, modeladas sobre o domínio de e-commerce da **TechStore** (`loja_tech`). Todo o desenvolvimento foi estruturado seguindo padrões profissionais de engenharia de dados, priorizando segurança transacional, legibilidade de código, idempotência e rastreabilidade de operações.
+Este projeto consiste na aplicação prática de modelagem relacional, consultas analíticas (DQL), rotinas armazenadas (Stored Procedures) e visões virtuais (Views) no Banco de Dados Relacional **`loja_tech`**, desenvolvido e validado no **MySQL Workbench**. A atividade tem como objetivo consolidar a leitura de esquema, a sintaxe fundamental de consulta e manipulação de dados, a auditoria transacional e a criação de Stored Procedures parametrizadas para o gerenciamento operacional da loja de tecnologia **TechStore**.
 
-### Competências Técnicas Aplicadas
-* **DDL & DML Idempotentes:** Criação segura de esquemas e tabelas (`IF NOT EXISTS`) e carga inicial sem duplicidade (`INSERT IGNORE`).
-* **Consultas Relacionais (DQL):** Extração de indicadores comerciais utilizando filtros compostos, buscas textuais, ordenação, funções de agregação e junções (`INNER JOIN`).
-* **Programação no Servidor (Stored Procedures):** Encapsulamento de regras de negócio com parâmetros de entrada (`IN`) e saída (`OUT`), variáveis locais, validações defensivas (`IF / ELSEIF / ELSE`), múltiplos *Result Sets* e gravação de trilha de auditoria.
-* **Abstração e Segurança (Views):** Estudo comparativo e implementação prática de 5 cenários onde `VIEW` supera o uso de `STORED PROCEDURE`.
-* **Backup e Versionamento:** Exportação completa (`dump`) via MySQL Workbench e controle de versão com commits atômicos no Git/GitHub.
+### Escopo Operacional
+* **Gestão de Clientes:** Cadastro centralizado de consumidores, controle de dados de contato (e-mail, CPF e telefone) e histórico de compras realizadas na plataforma.
+* **Catálogo de Produtos e Categorias:** Organização de itens tecnológicos por departamentos, precificação, busca textual e monitoramento de disponibilidade em estoque.
+* **Controle de Pedidos e Faturamento:** Acompanhamento do status das vendas (como pedidos pendentes de pagamento), associação entre cliente e pedido e apuração do faturamento bruto.
+* **Automação com Stored Procedures e Views:** Encapsulamento de regras de consulta, inserção, atualização, contagem de registros, logs de auditoria e abstração de dados no servidor MySQL utilizando boas práticas de programação.
 
 ---
 
