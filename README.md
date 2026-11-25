@@ -234,10 +234,97 @@ flowchart TD
 
 Os prints do MySQL Workbench estão na pasta [`prints/`](./prints).
 
-<!-- Troque pelos nomes reais dos seus arquivos -->
-| Consulta | Procedure | View |
-|:--------:|:---------:|:----:|
-| ![consultas](./prints/consultas.png) | ![procedures](./prints/procedures.png) | ![views](./prints/views.png) |
+## Evidências de execução
+
+Prints da execução no MySQL Workbench. Todos os arquivos ficam na pasta [`prints/`](./prints).
+
+### Parte 1: Consultas SQL
+
+**1. Listagem de clientes**
+
+![Listagem de clientes](./prints/consultas/listagem_clientes.png)
+
+**2. Produtos abaixo de R$ 500,00**
+
+![Produtos abaixo de 500](./prints/consultas/produtos_abaixo.png)
+
+**3. Pedidos pendentes**
+
+![Pedidos pendentes](./prints/consultas/pedidos_pendentes.png)
+
+**4. Catálogo ordenado por preço**
+
+![Catálogo ordenado por preço](./prints/consultas/catalogo_ordenado_preco.png)
+
+**5. Busca por "Monitor"**
+
+![Busca por Monitor](./prints/consultas/busca_monitor.png)
+
+**6. Periféricos com estoque acima de 40**
+
+![Periféricos com estoque](./prints/consultas/perifericos_estoque.png)
+
+**7. Total de clientes**
+
+![Total de clientes](./prints/consultas/total_clientes.png)
+
+**8. Faturamento bruto**
+
+![Faturamento bruto](./prints/consultas/faturamento_bruto.png)
+
+**9. Produto com categoria (INNER JOIN)**
+
+![JOIN produto e categoria](./prints/consultas/join_produto.png)
+
+**10. Pedidos da cliente Ana Silva**
+
+![Pedidos da Ana Silva](./prints/consultas/pedidos_ana.png)
+
+### Parte 2: Stored Procedures
+
+**1. `listar_categorias_ativas`**
+
+![listar_categorias_ativas](./prints/procedures/categoria_ativa.png)
+
+**2. `buscar_pedidos_por_status`**
+
+![buscar_pedidos_por_status](./prints/procedures/buscar_pedidos.png)
+
+**3. `inserir_categoria`**
+
+![inserir_categoria](./prints/procedures/inserir_categorias.png)
+
+**4. `atualizar_telefone_cliente`**
+
+![atualizar_telefone_cliente](./prints/procedures/atualizar_telefone.png)
+
+**5. `contar_produtos_categoria`**
+
+![contar_produtos_categoria](./prints/procedures/contar_produtos.png)
+
+**Avançadas (atividade da aula)**
+
+**`atualizar_preco_categoria`**
+
+![atualizar_preco_categoria](./prints/procedures/atualizar_preco.png)
+
+**`consultar_extrato_cliente`**
+
+![consultar_extrato_cliente](./prints/procedures/consultar_extrato.png)
+
+### Parte 3: Views
+
+**Catálogo / vitrine**
+
+![View catálogo vitrine](./prints/views/catologo_vitrine.png)
+
+**Clientes (visão pública)**
+
+![View clientes público](./prints/views/clientes_publico.png)
+
+**Detalhes dos itens do pedido**
+
+![View detalhes dos itens](./prints/views/detalhes_itens.png)
 
 ## Boas práticas aplicadas
 
